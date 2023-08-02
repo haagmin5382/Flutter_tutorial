@@ -79,30 +79,82 @@ class MyApp extends StatelessWidget {
                     height: 20,
                   ), // 20 만큼 띄우고
                   // 요소들을 서로 나란히 옆에 놓기 위해서 Row를 사용
-                  Row(
+                  const Row(
                     mainAxisAlignment:
                         MainAxisAlignment.spaceBetween, // 나란히 있는 애들 사이를 떨어 뜨려놓음
                     children: [
-                      Container(
-                        decoration: BoxDecoration(
-                            color: Colors.amber,
-                            borderRadius:
-                                BorderRadius.circular(45)), // 버튼 모서리 둥글게
-                        child: const Padding(
-                            padding: EdgeInsets.symmetric(
-                                vertical: 20,
-                                horizontal: 50), // 세로로 20 가로로 50의 padding값을 준다
-                            child: Text(
-                              'Transfer',
-                              style: TextStyle(fontSize: 22),
-                            )),
-                      ),
-                      const Button(
+                      Button(
+                          text: 'Request',
+                          bgColor: Colors.amber,
+                          textColor: Colors.black),
+                      Button(
                           text: 'Request',
                           bgColor: Color(0xFF1F2123),
                           textColor: Colors.white)
                     ],
-                  ) // Container는 HTML의 div와 같다.
+                  ),
+                  const SizedBox(
+                    height: 100,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween, // 가로 축
+                    crossAxisAlignment: CrossAxisAlignment.end, // 세로 축
+                    children: [
+                      const Text(
+                        'Wallets',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 36,
+                            fontWeight: FontWeight.w600),
+                      ),
+                      Text(
+                        'View All',
+                        style: TextStyle(
+                            color: Colors.white.withOpacity(0.8), fontSize: 18),
+                      )
+                    ],
+                  ),
+                  Container(
+                      decoration: BoxDecoration(
+                          color: const Color(0xFF1F2123),
+                          borderRadius: BorderRadius.circular(20)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(25),
+                        child: Row(
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  'Euro',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 32,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                Row(
+                                  children: [
+                                    const Text('6 248',
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 20)),
+                                    const SizedBox(
+                                      width: 5,
+                                    ),
+                                    Text("EUR",
+                                        style: TextStyle(
+                                            color:
+                                                Colors.white.withOpacity(0.8),
+                                            fontSize: 20))
+                                  ],
+                                )
+                              ],
+                            )
+                          ],
+                        ),
+                      )) // Container는 HTML의 div와 같다.
                 ],
               )),
           backgroundColor: const Color(0xFF181818)),
