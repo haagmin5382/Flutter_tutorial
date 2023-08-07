@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:toonflix/widgets/button.dart';
+import 'package:toonflix/widgets/currency_card.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,7 +22,8 @@ class MyApp extends StatelessWidget {
       ),
       // home: Text("Hello world"), Flutter에 화면 렌더링은 scaffold가 필요하다 (화면을 정렬해줌)
       home: Scaffold(
-          body: Padding(
+          body: SingleChildScrollView(
+              // SingleChildScrollView는 스크롤 가능하게 해주는 위젯
               padding: const EdgeInsets.symmetric(
                   horizontal: 20), // 수평 방향으로 20만큼 padding 값을 준다
               child: Column(
@@ -58,7 +60,7 @@ class MyApp extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(
-                    height: 120, // 맨 위에서 높이 80 + 120 만큼 띄운다
+                    height: 70, // 맨 위에서 높이 80 + 70 만큼 띄운다
                   ),
                   Text(
                     'Total Balance',
@@ -114,47 +116,33 @@ class MyApp extends StatelessWidget {
                       )
                     ],
                   ),
-                  Container(
-                      decoration: BoxDecoration(
-                          color: const Color(0xFF1F2123),
-                          borderRadius: BorderRadius.circular(20)),
-                      child: Padding(
-                        padding: const EdgeInsets.all(25),
-                        child: Row(
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const Text(
-                                  'Euro',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 32,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                Row(
-                                  children: [
-                                    const Text('6 248',
-                                        style: TextStyle(
-                                            color: Colors.white, fontSize: 20)),
-                                    const SizedBox(
-                                      width: 5,
-                                    ),
-                                    Text("EUR",
-                                        style: TextStyle(
-                                            color:
-                                                Colors.white.withOpacity(0.8),
-                                            fontSize: 20))
-                                  ],
-                                )
-                              ],
-                            )
-                          ],
-                        ),
-                      )) // Container는 HTML의 div와 같다.
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const CurrencyCard(
+                      name: "Euro",
+                      code: "EUR",
+                      amount: "6 248",
+                      icon: Icons.euro_rounded,
+                      isInverted: false,
+                      order: 0),
+
+                  const CurrencyCard(
+                      name: "Bitcoin",
+                      code: "BTC",
+                      amount: "9 785",
+                      icon: Icons.currency_bitcoin,
+                      isInverted: true,
+                      order: 1),
+
+                  const CurrencyCard(
+                      name: "Dollar",
+                      code: "USD",
+                      amount: "428",
+                      icon: Icons.attach_money_outlined,
+                      isInverted: false,
+                      order: 2),
+                  // Container는 HTML의 div와 같다.
                 ],
               )),
           backgroundColor: const Color(0xFF181818)),
